@@ -48,6 +48,8 @@ bool parseLine(const string& line, Nuclide& result) {
     }
 }
 
+const double kamu=931.49410242;//amu, in MeV/c2
+constexpr double kMe = 0.510998950; // electron mass, in MeV
 // 主函数
 void ameMass2020(int a, int z){
 	const char massFile[50]="mass_1.mass_1.txt";//https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt
@@ -79,8 +81,10 @@ void ameMass2020(int a, int z){
         Nuclide nuclide;
         if (parseLine(line, nuclide)) {
             if (nuclide.A == a && nuclide.Z == z) {
+		double mex=nuclide.mass_excess；
                 cout << "nuclide: " << nuclide.element 
-                     << " mass excess: " << nuclide.mass_excess << " keV" << endl;
+                     << " mass excess: " << mex << " keV\n";
+		cout<<"mass of nucleus: "<<a * kamu +mex*1.e-3 -z*kMe +(14.4381*pow(z,2.39)+ 1.55468e-6*pow(z,5.35)*1e-6)<<"\n";//formula in AME2020
                 return;
             }
         }
