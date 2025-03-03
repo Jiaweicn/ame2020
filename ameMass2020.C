@@ -84,7 +84,7 @@ void ameMass2020(int a, int z){
 		double mex=nuclide.mass_excess；
                 cout << "nuclide: " << nuclide.element 
                      << " mass excess: " << mex << " keV\n";
-		cout<<"mass of nucleus: "<<a * kamu +mex*1.e-3 -z*kMe +(14.4381*pow(z,2.39)+ 1.55468e-6*pow(z,5.35)*1e-6)<<"\n";//formula in AME2020
+		cout<<"mass of nucleus: "<<a * kamu +mex*1.e-3 -z*kMe +(14.4381*pow(z,2.39)+ 1.55468e-6*pow(z,5.35))*1.e-6<<"\n";//formula in AME2020
                 return;
             }
         }
